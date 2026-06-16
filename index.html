@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório Comercial — Clínica Takaki</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #050505;
+    --green: #00FF88;
+    --green-dim: #00cc6a;
+    --green-glow: rgba(0, 255, 136, 0.15);
+    --green-border: rgba(0, 255, 136, 0.3);
+    --purple: #3d0066;
+    --purple-mid: #5c0099;
+    --purple-glow: rgba(100, 0, 180, 0.25);
+    --white: #ffffff;
+    --gray: #a0a0a0;
+    --gray-light: #d0d0d0;
+    --card-bg: #0f0f0f;
+    --card-border: rgba(255,255,255,0.07);
+  }
+
+  body {
+    background-color: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+
+  @media print {
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+    body { background-color: #050505 !important; }
+    .cover { background-color: #050505 !important; min-height: 100vh; }
+    .page-break { page-break-before: always; }
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 72px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,255,136,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(100,0,180,0.35) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-tag {
+    display: inline-block;
+    color: var(--green);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .cover-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .cover-title span {
+    color: var(--green);
+  }
+
+  .cover-subtitle {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--gray-light);
+    margin-bottom: 56px;
+    max-width: 520px;
+  }
+
+  .cover-line {
+    width: 60px;
+    height: 2px;
+    background: var(--green);
+    margin-bottom: 40px;
+    box-shadow: 0 0 12px var(--green);
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 48px;
+  }
+
+  .cover-meta-item label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 4px;
+  }
+
+  .cover-meta-item span {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+  }
+
+  .cover-brand {
+    position: absolute;
+    bottom: 72px; right: 72px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--green);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .cover-grid {
+    position: absolute;
+    top: 0; right: 0;
+    width: 40%;
+    height: 100%;
+    background-image:
+      linear-gradient(rgba(0,255,136,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,136,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  /* ── PAGE LAYOUT ── */
+  .page {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 64px 72px;
+  }
+
+  @media print {
+    .page { padding: 48px 56px; }
+    .cover { padding: 64px 56px; }
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-number {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background: var(--purple-mid);
+    color: var(--white);
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 28px;
+    line-height: 1.2;
+  }
+
+  .section-title span {
+    color: var(--green);
+  }
+
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--card-border);
+    margin: 48px 0;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+
+  .card-green {
+    border-left: 3px solid var(--green);
+    background: linear-gradient(135deg, rgba(0,255,136,0.06) 0%, var(--card-bg) 60%);
+  }
+
+  .card-alert {
+    border-left: 3px solid #ff4444;
+    background: linear-gradient(135deg, rgba(255,68,68,0.06) 0%, var(--card-bg) 60%);
+  }
+
+  .card-purple {
+    border-left: 3px solid var(--purple-mid);
+    background: linear-gradient(135deg, var(--purple-glow) 0%, var(--card-bg) 60%);
+  }
+
+  .card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .card p, .card li {
+    font-size: 13.5px;
+    color: var(--gray-light);
+    line-height: 1.75;
+  }
+
+  .card ul {
+    padding-left: 20px;
+  }
+
+  .card li {
+    margin-bottom: 4px;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight {
+    background: rgba(0,255,136,0.08);
+    border: 1px solid var(--green-border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+
+  .highlight p {
+    font-size: 13.5px;
+    color: var(--gray-light);
+    line-height: 1.75;
+    font-style: italic;
+  }
+
+  .highlight strong {
+    color: var(--green);
+    font-style: normal;
+  }
+
+  /* ── TAGS ── */
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .tag-green { background: rgba(0,255,136,0.15); color: var(--green); }
+  .tag-red { background: rgba(255,68,68,0.15); color: #ff6666; }
+  .tag-yellow { background: rgba(255,200,0,0.15); color: #ffc800; }
+  .tag-purple { background: rgba(155,89,182,0.15); color: #cc88ff; }
+
+  /* ── BODY TEXT ── */
+  p {
+    font-size: 14px;
+    color: var(--gray-light);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  strong { color: var(--white); font-weight: 600; }
+
+  /* ── SCRIPT BOX ── */
+  .script-box {
+    background: #0a0a0a;
+    border: 1px solid rgba(0,255,136,0.2);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 12px 0;
+    position: relative;
+  }
+
+  .script-box::before {
+    content: 'Script';
+    position: absolute;
+    top: -8px; left: 16px;
+    background: var(--black);
+    padding: 0 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+  }
+
+  .script-box p {
+    font-size: 13px;
+    color: #e0e0e0;
+    font-style: italic;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* ── OBJECTION BLOCKS ── */
+  .objection-block {
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .objection-header {
+    background: rgba(255,68,68,0.12);
+    border-bottom: 1px solid rgba(255,68,68,0.2);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .objection-header .icon {
+    font-size: 18px;
+  }
+
+  .objection-header h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ff8888;
+  }
+
+  .objection-body {
+    padding: 20px 24px;
+    background: var(--card-bg);
+  }
+
+  .objection-body h4 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 10px;
+    margin-top: 16px;
+  }
+
+  .objection-body h4:first-child { margin-top: 0; }
+
+  .objection-body p {
+    font-size: 13px;
+    color: var(--gray-light);
+    margin-bottom: 8px;
+  }
+
+  /* ── SPIN BOX ── */
+  .spin-block {
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .spin-header {
+    padding: 12px 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .spin-s { background: rgba(0,100,255,0.15); color: #6699ff; border-bottom: 1px solid rgba(0,100,255,0.2); }
+  .spin-p { background: rgba(255,150,0,0.12); color: #ffaa44; border-bottom: 1px solid rgba(255,150,0,0.2); }
+  .spin-i { background: rgba(255,68,68,0.12); color: #ff8888; border-bottom: 1px solid rgba(255,68,68,0.2); }
+  .spin-n { background: rgba(0,255,136,0.1); color: var(--green); border-bottom: 1px solid rgba(0,255,136,0.2); }
+
+  .spin-body {
+    padding: 14px 20px;
+    background: var(--card-bg);
+  }
+
+  .spin-body p {
+    font-size: 13px;
+    font-style: italic;
+    color: #d0d0d0;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* ── ACTION TABLE ── */
+  .action-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .action-table th {
+    background: rgba(0,255,136,0.1);
+    color: var(--green);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--green-border);
+  }
+
+  .action-table td {
+    padding: 13px 18px;
+    font-size: 13px;
+    color: var(--gray-light);
+    border-bottom: 1px solid var(--card-border);
+    background: var(--card-bg);
+    vertical-align: top;
+  }
+
+  .action-table tr:last-child td { border-bottom: none; }
+
+  .priority-alta {
+    display: inline-block;
+    padding: 2px 8px;
+    background: rgba(255,68,68,0.2);
+    color: #ff8888;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .priority-media {
+    display: inline-block;
+    padding: 2px 8px;
+    background: rgba(255,200,0,0.15);
+    color: #ffc800;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ── RULE BOX ── */
+  .rule-box {
+    background: rgba(0,255,136,0.06);
+    border: 1px solid var(--green-border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+
+  .rule-box h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 12px;
+  }
+
+  .rule-box ol {
+    padding-left: 20px;
+  }
+
+  .rule-box li {
+    font-size: 13.5px;
+    color: var(--gray-light);
+    margin-bottom: 6px;
+    line-height: 1.7;
+  }
+
+  /* ── PAGE BREAK ── */
+  .page-break { page-break-before: always; padding-top: 64px; }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--card-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer span {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 1px;
+  }
+
+  .footer .brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: 2px;
+  }
+
+  /* ── TWO COLS ── */
+  .two-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  /* ── INTRO BOX ── */
+  .intro-box {
+    background: linear-gradient(135deg, rgba(0,255,136,0.05) 0%, rgba(61,0,102,0.15) 100%);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+  }
+
+  .intro-box p {
+    font-size: 14.5px;
+    color: var(--gray-light);
+    margin: 0;
+    line-height: 1.85;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════ CAPA ══════════════════════════════ -->
+<div class="cover">
+  <div class="cover-grid"></div>
+
+  <div class="cover-tag">Relatório Interno — Confidencial</div>
+
+  <h1 class="cover-title">
+    Análise do<br>
+    <span>Processo Comercial</span>
+  </h1>
+
+  <p class="cover-subtitle">
+    Diagnóstico completo do funil de conversão pós-avaliação de quiropraxia, com pontos de melhoria e plano de ação para a equipe comercial.
+  </p>
+
+  <div class="cover-line"></div>
+
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <label>Cliente</label>
+      <span>Clínica Takaki</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Elaborado por</label>
+      <span>Daniel — Metamavi</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Data</label>
+      <span>Junho de 2026</span>
+    </div>
+  </div>
+
+  <div class="cover-brand">METAMAVI</div>
+</div>
+
+<!-- ══════════════════════════════ PÁGINA 1 ══════════════════════════════ -->
+<div class="page">
+
+  <div class="section-number">Contexto</div>
+  <h2 class="section-title">Objetivo deste relatório</h2>
+
+  <div class="intro-box">
+    <p>
+      Este relatório tem como foco o <strong>processo comercial realizado pelas vendedoras após a avaliação de quiropraxia</strong>. A análise foi feita a partir de visitas como paciente oculto, acompanhando o atendimento de Cris e Juliana. O material serve de base para treinamentos e ajustes de processo para <strong>toda a equipe comercial</strong> — não apenas as vendedoras analisadas.
+    </p>
+  </div>
+
+  <div class="section-number">Visão Geral</div>
+  <h2 class="section-title">O que já <span>funciona bem</span></h2>
+
+  <div class="two-cols">
+    <div class="card card-green">
+      <h3>Tablet com planos visuais</h3>
+      <p>A ferramenta existe e é um diferencial real. Apresentar planos em tela organizada transmite profissionalismo. O ajuste necessário é na arte, não na ferramenta.</p>
+    </div>
+    <div class="card card-green">
+      <h3>Plataforma CloudIA</h3>
+      <p>O processo de o profissional subir informações do paciente para a vendedora consultar é o caminho certo. O problema está na execução irregular, não no conceito.</p>
+    </div>
+  </div>
+
+  <div class="two-cols">
+    <div class="card card-green">
+      <h3>Guia de recomendação</h3>
+      <p>Já existe o bilhete de handoff assinado pelo profissional. Caminho correto — o ajuste é no que está sendo preenchido, não na existência da guia.</p>
+    </div>
+    <div class="card card-green">
+      <h3>Cadência de WhatsApp</h3>
+      <p>Já existe uma cadência para pacientes que não fecham na hora. Processo correto — deve ser mantido e monitorado.</p>
+    </div>
+  </div>
+
+  <div class="two-cols">
+    <div class="card card-green">
+      <h3>Plano familiar como contorno</h3>
+      <p>Quando o paciente diz que precisa falar com a esposa, a Cris convida a esposa a vir para uma avaliação e apresenta o plano familiar. Boa virada — deve ser padronizada para toda a equipe.</p>
+    </div>
+    <div class="card card-green">
+      <h3>Estrutura dos planos</h3>
+      <p>Os planos têm boa estrutura de progressão (semanal → quinzenal → mensal). A base está correta — o foco é melhorar a apresentação, não redesenhar os planos.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Clínica Takaki — Análise Comercial 2026</span>
+    <span class="brand">METAMAVI</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ PÁGINA 2 ══════════════════════════════ -->
+<div class="page page-break">
+
+  <div class="section-number">Ponto 01</div>
+  <h2 class="section-title">Ambiente de <span>Negociação</span></h2>
+
+  <div class="card card-alert" style="margin-bottom: 24px;">
+    <div class="tag tag-red">Problema Identificado</div>
+    <h3>Apresentação de planos na recepção aberta</h3>
+    <p>Em alguns horários, quando o espaço reservado não está disponível, a vendedora apresenta os planos na recepção — com outros pacientes aguardando no mesmo ambiente. Nenhum paciente vai se abrir sobre sua situação financeira, suas dúvidas reais ou objeções na frente de desconhecidos. A tendência é usar uma objeção de saída rápida e ir embora — não porque não quer fechar, mas porque o ambiente não deu condições para a conversa certa acontecer.</p>
+  </div>
+
+  <div class="highlight">
+    <p><strong>Regra que deve orientar o processo:</strong> nenhuma negociação de planos deve acontecer na recepção aberta quando há outros pacientes presentes. A operação precisa garantir isso respeitando a realidade do dia a dia.</p>
+  </div>
+
+  <p style="margin-top: 20px;"><strong>Como resolver na prática:</strong></p>
+
+  <div class="card" style="margin-bottom: 12px;">
+    <div class="tag tag-yellow">Cenário 01 — 1 vendedora na recepção</div>
+    <h3>Juliana (gestora comercial) desce para fazer a venda</h3>
+    <p>Quando há apenas uma vendedora na recepção e não é possível deixar o posto vazio, a <strong>Juliana desce para conduzir a apresentação de planos na sala isolada</strong>, enquanto a vendedora permanece na recepção. Isso exige que a Juliana esteja disponível e ciente do momento em que o paciente sai da avaliação.</p>
+  </div>
+
+  <div class="card">
+    <div class="tag tag-yellow">Cenário 02 — 2 vendedoras na recepção</div>
+    <h3>Uma fica na recepção, a outra conduz a venda</h3>
+    <p>Quando há duas vendedoras disponíveis, uma permanece no atendimento da recepção enquanto a outra <strong>leva o paciente para a sala reservada</strong> e conduz a apresentação com privacidade.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="section-number">Ponto 02</div>
+  <h2 class="section-title">Passagem de Bastão: <span>Profissional → Vendedora</span></h2>
+
+  <p>Existem dois mecanismos de passagem de informação do profissional para a equipe comercial. Ambos apontam na direção certa — o problema está na execução e no que está sendo preenchido.</p>
+
+  <div class="two-cols" style="margin-top: 20px;">
+    <div class="card card-alert">
+      <div class="tag tag-red">Problema</div>
+      <h3>CloudIA — uso irregular</h3>
+      <p>O profissional pode subir as informações do paciente antes da vendedora atendê-lo. Na prática, isso fica falho pela correria do dia a dia.</p>
+    </div>
+    <div class="card card-alert">
+      <div class="tag tag-red">Problema</div>
+      <h3>Guia de recomendação — incompleta</h3>
+      <p>Existe o bilhete assinado pelo profissional, mas costuma conter apenas a frequência indicada (ex: "1x por semana") — sem nível de dor, condição clínica ou contexto.</p>
+    </div>
+  </div>
+
+  <p>O resultado é que a vendedora começa a conversa sem saber: qual o nível de dor do paciente, se o caso é agudo ou preventivo, o que mais tocou o paciente durante a avaliação, e qual frequência foi recomendada com contexto. Isso torna impossível personalizar a abordagem comercial.</p>
+
+  <div class="rule-box">
+    <h4>Recomendação — Expandir a Guia de Recomendação com 3 campos adicionais</h4>
+    <ol>
+      <li><strong>Nível de dor atual</strong> — escala de 0 a 10</li>
+      <li><strong>Situação clínica</strong> — agudo / estabilização / preventivo</li>
+      <li><strong>Observação livre</strong> — qualquer dado que ajude a vendedora (ex: "hérnia confirmada", "dor prejudica o trabalho", "muito receptivo ao tratamento")</li>
+    </ol>
+  </div>
+
+  <p>60 segundos do profissional preenchendo esses campos mudam completamente o nível da conversa comercial. O uso da <strong>CloudIA deve ser tratado como obrigatório</strong>, não opcional — com o profissional subindo as informações antes do paciente descer para a recepção.</p>
+
+  <div class="footer">
+    <span>Clínica Takaki — Análise Comercial 2026</span>
+    <span class="brand">METAMAVI</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ PÁGINA 3 ══════════════════════════════ -->
+<div class="page page-break">
+
+  <div class="section-number">Ponto 03</div>
+  <h2 class="section-title">Abertura da <span>Conversa Comercial</span></h2>
+
+  <p>Cada vendedora tem uma abordagem diferente na abertura:</p>
+
+  <div class="two-cols">
+    <div class="card card-green">
+      <div class="tag tag-green">Melhor abordagem</div>
+      <h3>Juliana — Pesquisa de satisfação</h3>
+      <p>Abre com uma pesquisa de satisfação antes de qualquer apresentação de plano. O paciente verbaliza respostas positivas e entra em estado de concordância antes de ver preço. Técnica mais eficaz — deve ser padronizada.</p>
+    </div>
+    <div class="card card-alert">
+      <div class="tag tag-red">Para melhorar</div>
+      <h3>Cris — Direto nos planos</h3>
+      <p>Vai direto para a apresentação de planos sem aquecimento inicial. Funciona com pacientes já totalmente decididos, mas deixa espaço emocional e de conexão na mesa.</p>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <p><strong>Recomendação:</strong> padronizar a abertura para toda a equipe com a pesquisa de satisfação. A pesquisa atual da Juliana pode estar longa — reduzir para <strong>no máximo 6 perguntas</strong>, eliminando as que não geram argumentos de venda. Manter as perguntas cujas respostas possam ser usadas na negociação (nota do atendimento, como o paciente se sente agora, comparado a como chegou). Remover as que coletam dado sem impacto comercial.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="section-number">Ponto 04</div>
+  <h2 class="section-title">Uso do Gráfico de Saúde <span>na Venda</span></h2>
+
+  <p>O gráfico <strong>verde / amarelo / vermelho</strong> — que mostra a progressão do quadro do paciente — existe na clínica mas não está sendo usado durante a apresentação de planos.</p>
+
+  <div class="card" style="margin: 20px 0;">
+    <div class="tag tag-purple">Recomendação</div>
+    <h3>Incluir o gráfico no tablet e usar como âncora visual da venda</h3>
+    <p>Com base na guia de recomendação expandida, a vendedora saberá onde o paciente está na escala e pode usar isso como argumento personalizado de urgência:</p>
+  </div>
+
+  <div class="script-box">
+    <p>"O doutor identificou que você está aqui, no amarelo. Isso significa que o tratamento frequente agora evita chegar ao vermelho — que é quando a dor começa a impactar o dia a dia, o trabalho, o treino. A boa notícia é que, no seu estágio, a resposta ao tratamento é muito mais rápida."</p>
+  </div>
+
+  <p style="margin-top: 16px;">Isso <strong>personaliza a urgência</strong> e torna o plano uma consequência lógica da situação do paciente — não uma oferta de venda genérica.</p>
+
+  <div class="section-divider"></div>
+
+  <div class="section-number">Ponto 05</div>
+  <h2 class="section-title">Melhorias na Arte <span>do Tablet</span></h2>
+
+  <p>A estrutura dos planos está correta. O que precisa mudar é a apresentação visual para eliminar erros de fala e facilitar a leitura durante a negociação.</p>
+
+  <div class="card" style="margin-bottom: 12px;">
+    <h3>Edições solicitadas para a arte (Isa)</h3>
+    <ul>
+      <li><strong>Aumentar fonte e espessura</strong> do preço cheio do plano e do valor à vista no Pix — hoje está pequeno demais para leitura confortável</li>
+      <li><strong>Adicionar percentual de desconto</strong> para quem paga à vista no Pix</li>
+      <li><strong>Substituir o desconto por sessão pelo desconto total em R$</strong> comparado com o mesmo número de sessões avulsas — ex: <em>"Você economiza R$720 nesse plano"</em> em vez de <em>"R$60 de desconto por sessão"</em></li>
+      <li><strong>Incluir o gráfico de saúde</strong> (verde/amarelo/vermelho) como tela ou aba dentro do tablet, para uso durante a apresentação</li>
+    </ul>
+  </div>
+
+  <div class="highlight">
+    <p><strong>Por que o total importa mais que o desconto por sessão?</strong> "R$720 de economia" ativa o cérebro do comprador de forma muito diferente de "R$60 por sessão". O número grande cria impacto visual e justifica psicologicamente o compromisso com o plano.</p>
+  </div>
+
+  <div class="footer">
+    <span>Clínica Takaki — Análise Comercial 2026</span>
+    <span class="brand">METAMAVI</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ PÁGINA 4 ══════════════════════════════ -->
+<div class="page page-break">
+
+  <div class="section-number">Ponto 06</div>
+  <h2 class="section-title">Investigação com <span>SPIN Selling</span></h2>
+
+  <p>Quando a vendedora não tem acesso às informações do paciente via CloudIA ou a guia de recomendação veio incompleta, ela apresenta os planos sem saber o que realmente está pesando para aquela pessoa. A solução é inserir <strong>2 a 3 perguntas estratégicas</strong> antes da apresentação.</p>
+
+  <div class="highlight" style="margin-bottom: 24px;">
+    <p><strong>Objetivo das perguntas SPIN:</strong> identificar as dores reais do paciente para que a vendedora possa usá-las como argumento de valor — e separar quem está com dor aguda de quem está em caso preventivo. Não é interrogatório — é conversa direcionada.</p>
+  </div>
+
+  <div class="spin-block">
+    <div class="spin-header spin-s">S — Situação</div>
+    <div class="spin-body">
+      <p>"Como é que foi com o doutor? O que ele identificou no seu caso?"</p>
+    </div>
+  </div>
+
+  <div class="spin-block">
+    <div class="spin-header spin-s spin-s" style="background: rgba(0,100,255,0.15); color:#6699ff; border-bottom: 1px solid rgba(0,100,255,0.2);">S — Situação (alternativa)</div>
+    <div class="spin-body">
+      <p>"Você está sentindo dor com frequência ou veio mais por prevenção?"</p>
+    </div>
+  </div>
+
+  <div class="spin-block">
+    <div class="spin-header spin-p">P — Problema</div>
+    <div class="spin-body">
+      <p>"Isso já chegou a atrapalhar alguma atividade do seu dia a dia — trabalho, treino, sono?"</p>
+    </div>
+  </div>
+
+  <div class="spin-block">
+    <div class="spin-header spin-i">I — Implicação</div>
+    <div class="spin-body">
+      <p>"E se você não tratar agora, como você imagina que isso evolui ao longo dos próximos meses?"</p>
+    </div>
+  </div>
+
+  <div class="spin-block">
+    <div class="spin-header spin-n">N — Necessidade de solução</div>
+    <div class="spin-body">
+      <p>"Então faz sentido para você resolver isso agora de forma estruturada, antes de piorar?"</p>
+    </div>
+  </div>
+
+  <p style="margin-top: 16px;">Não é necessário usar as quatro perguntas — <strong>2 bem escolhidas</strong> já mudam o nível da conversa e entregam as munições certas para a negociação.</p>
+
+  <div class="section-divider"></div>
+
+  <div class="section-number">Ponto 07</div>
+  <h2 class="section-title">Prova Social <span>da Equipe</span></h2>
+
+  <div class="card card-green">
+    <div class="tag tag-green">Ponto de Ouro — Subutilizado</div>
+    <h3>Testemunho pessoal da vendedora</h3>
+    <p>A Cris mencionou, quando perguntada pelo paciente, que faz quiropraxia há 13 anos — começou com enxaqueca debilitante e hoje está só na manutenção. Esse é o depoimento mais poderoso de toda a apresentação. E surgiu apenas porque o cliente perguntou.</p>
+  </div>
+
+  <div class="highlight" style="margin-top: 16px;">
+    <p><strong>Recomendação:</strong> se a vendedora é paciente da clínica, trazer esse relato <strong>no início da conversa</strong>, antes dos planos, antes do preço — como contexto natural. Funciona como prova social interna e quebra a desconfiança de quem ainda está inseguro sobre o tratamento. Não esperar o cliente perguntar.</p>
+  </div>
+
+  <div class="footer">
+    <span>Clínica Takaki — Análise Comercial 2026</span>
+    <span class="brand">METAMAVI</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ PÁGINA 5 — OBJEÇÕES ══════════════════════════════ -->
+<div class="page page-break">
+
+  <div class="section-number">Ponto 08 — Treinamento Prioritário</div>
+  <h2 class="section-title">Conversão de <span>Objeções</span></h2>
+
+  <div class="card card-alert" style="margin-bottom: 28px;">
+    <div class="tag tag-red">Diagnóstico crítico</div>
+    <h3>A equipe aceita a primeira objeção sem investigar</h3>
+    <p>Nas visitas analisadas, as vendedoras aceitaram a primeira objeção apresentada sem verificar se era real ou uma desculpa para evitar revelar o que de fato estava impedindo a decisão. Aceitar a primeira objeção sem investigar significa deixar a objeção real sem resposta — e perder a venda.</p>
+  </div>
+
+  <div class="rule-box" style="margin-bottom: 32px;">
+    <h4>Regra geral para qualquer objeção</h4>
+    <ol>
+      <li><strong>Nunca aceitar na primeira.</strong> Sempre investigar uma vez antes de recuar ou oferecer alternativa.</li>
+      <li><strong>Verificar se é objeção real ou desculpa.</strong> Uma pergunta aberta — "tem algo mais que ficou em dúvida?" — revela a objeção verdadeira.</li>
+      <li><strong>Não oferecer desconto ou plano menor como primeira reação a preço.</strong> Isso ensina o paciente a objetar sempre — porque sempre aparece algo mais barato.</li>
+      <li><strong>Usar o quadro clínico do paciente como argumento de urgência</strong> — mas só funciona se a vendedora souber qual é o caso (reforça a importância do handoff).</li>
+    </ol>
+  </div>
+
+  <!-- OBJEÇÃO 1 -->
+  <div class="objection-block">
+    <div class="objection-header">
+      <span class="icon">💳</span>
+      <h3>Objeção: "Meu cartão está no limite / não tenho condição agora"</h3>
+    </div>
+    <div class="objection-body">
+      <h4>Antes de recuar — investigar</h4>
+      <div class="script-box">
+        <p>"Entendo. Além do cartão, existe alguma outra forma que ficaria mais tranquilo para você — Pix, débito, ou talvez dividir em datas diferentes?"</p>
+      </div>
+      <div class="script-box">
+        <p>"Quanto ficaria confortável como primeira parcela?"</p>
+      </div>
+      <div class="script-box">
+        <p>"Tem alguma outra pessoa que poderia dividir esse investimento com você — um familiar, cônjuge?"</p>
+      </div>
+      <h4>Se nenhuma alternativa funcionar — oferecer a ponte</h4>
+      <div class="script-box">
+        <p>"Sem problema. O que posso fazer é deixar agendada a sua próxima sessão avulsa. Você mantém o tratamento, e quando resolver a questão do cartão, a gente fecha o plano com o desconto garantido."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- OBJEÇÃO 2 -->
+  <div class="objection-block">
+    <div class="objection-header">
+      <span class="icon">👫</span>
+      <h3>Objeção: "Preciso falar com minha esposa / familiar"</h3>
+    </div>
+    <div class="objection-body">
+      <h4>Resposta passiva a evitar</h4>
+      <p style="color: #ff8888;">"Tudo bem, vê lá, certinho." — isso é aceitar a objeção sem nenhuma ação. Raramente o paciente volta.</p>
+      <h4>Primeiro — explorar o plano familiar</h4>
+      <div class="script-box">
+        <p>"Faz sentido. Ela já tem algum desconforto também? A gente tem um plano familiar que fica bem mais em conta para os dois — às vezes fica mais fácil justificar o investimento quando os dois se beneficiam. Que tal trazer ela para uma avaliação gratuita?"</p>
+      </div>
+      <h4>Se não quiser trazer o cônjuge — garantir o próximo passo</h4>
+      <div class="script-box">
+        <p>"Entendo. Vou deixar agendada a sua próxima sessão avulsa pra você não perder o ritmo do tratamento. Aí você conversa com ela e me fala como ficou — quando quiser fechar o plano, o desconto continua."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- OBJEÇÃO 3 -->
+  <div class="objection-block">
+    <div class="objection-header">
+      <span class="icon">🤔</span>
+      <h3>Objeção: "Vou pensar"</h3>
+    </div>
+    <div class="objection-body">
+      <h4>Por que essa objeção quase sempre é uma desculpa</h4>
+      <p>Raramente alguém "pensa" e volta espontaneamente. Essa frase geralmente esconde a objeção real — preço, frequência, prazo, ou falta de confiança. A função da vendedora é descobrir qual é.</p>
+      <h4>Como revelar a objeção real</h4>
+      <div class="script-box">
+        <p>"Claro, sem problema. Só para eu entender melhor — teve alguma dúvida específica que ficou ou algum ponto que não ficou claro para você?"</p>
+      </div>
+      <p>A resposta vai revelar o que está de fato travando a decisão — e aí a vendedora pode responder de verdade, em vez de deixar o paciente ir embora sem resolução.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Clínica Takaki — Análise Comercial 2026</span>
+    <span class="brand">METAMAVI</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ PÁGINA 6 — PLANO DE AÇÃO ══════════════════════════════ -->
+<div class="page page-break">
+
+  <div class="section-number">Resumo</div>
+  <h2 class="section-title">Plano de <span>Ação</span></h2>
+
+  <p style="margin-bottom: 28px;">Ações organizadas por prioridade para implementação imediata e de médio prazo.</p>
+
+  <table class="action-table">
+    <thead>
+      <tr>
+        <th style="width: 42%;">Ação</th>
+        <th style="width: 28%;">Responsável</th>
+        <th style="width: 16%;">Prioridade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Definir protocolo de ambiente: negociação na sala isolada — Juliana desce quando há 1 vendedora; revezamento quando há 2</td>
+        <td>Juliana (gestão) + Equipe</td>
+        <td><span class="priority-alta">Alta</span></td>
+      </tr>
+      <tr>
+        <td>Expandir Guia de Recomendação com 3 campos: nível de dor (0–10), situação clínica e observação livre</td>
+        <td>Renato + Profissionais</td>
+        <td><span class="priority-alta">Alta</span></td>
+      </tr>
+      <tr>
+        <td>Tornar uso da CloudIA obrigatório antes do paciente descer para a recepção</td>
+        <td>Gestão + Profissionais</td>
+        <td><span class="priority-alta">Alta</span></td>
+      </tr>
+      <tr>
+        <td>Treinamento de objeções com roleplay: cartão no limite, cônjuge, "vou pensar"</td>
+        <td>Juliana (gestão comercial)</td>
+        <td><span class="priority-alta">Alta</span></td>
+      </tr>
+      <tr>
+        <td>Padronizar abertura com pesquisa de satisfação (máx. 6 perguntas) para toda a equipe</td>
+        <td>Todas as vendedoras</td>
+        <td><span class="priority-media">Média</span></td>
+      </tr>
+      <tr>
+        <td>Incorporar 2–3 perguntas SPIN quando os dados do paciente não estão disponíveis</td>
+        <td>Todas as vendedoras</td>
+        <td><span class="priority-media">Média</span></td>
+      </tr>
+      <tr>
+        <td>Integrar gráfico verde/amarelo/vermelho na apresentação de planos (verbal + visual)</td>
+        <td>Todas as vendedoras</td>
+        <td><span class="priority-media">Média</span></td>
+      </tr>
+      <tr>
+        <td>Trazer o testemunho pessoal da vendedora (quando paciente da clínica) no início da conversa</td>
+        <td>Todas as vendedoras</td>
+        <td><span class="priority-media">Média</span></td>
+      </tr>
+      <tr>
+        <td>Atualizar arte do tablet: fonte maior, % desconto Pix, economia total em R$, gráfico de saúde</td>
+        <td>Isa (designer)</td>
+        <td><span class="priority-media">Média</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-divider"></div>
+
+  <div class="section-number">Conclusão</div>
+  <h2 class="section-title">Síntese <span>Executiva</span></h2>
+
+  <div class="intro-box">
+    <p>
+      A clínica tem um ativo muito forte no atendimento técnico dos profissionais — o paciente sai da avaliação com alto nível de confiança, entendimento e abertura. Esse estado ideal não está sendo aproveitado plenamente pela equipe comercial, que muitas vezes começa a conversa sem contexto sobre o paciente e em ambiente inadequado para negociação.<br><br>
+      As vendedoras conhecem os planos e têm boas ferramentas. O que falta é <strong>processo</strong>: um briefing mínimo do profissional, uma abertura padronizada, técnica de investigação de dores, manejo de objeções e um protocolo de ambiente que garanta privacidade na negociação.<br><br>
+      <strong>A virada principal não é vender mais — é conectar o que acontece na sala de avaliação com o que acontece na recepção.</strong>
+    </p>
+  </div>
+
+  <div class="footer" style="margin-top: 48px;">
+    <span>Clínica Takaki — Análise Comercial 2026</span>
+    <span class="brand">METAMAVI</span>
+  </div>
+</div>
+
+</body>
+</html>
